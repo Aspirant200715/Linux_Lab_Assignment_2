@@ -1,0 +1,21 @@
+touch system.log
+
+cat > system.log << EOF
+INFO: Server started
+INFO: User logged in
+ERROR: Database connection failed
+INFO: Backup completed
+ERROR: Disk space low
+EOF
+
+tail -f system.log | grep "ERROR" >> error_report.txt 2> /dev/null
+
+echo "INFO: User logged out" >> system.log
+
+echo "ERROR: Network Timeout" >> system.log
+
+echo "ERROR: Permission Denied" >> system.log
+
+cat error_report.txt
+
+cat error_report.txt > output.txt
