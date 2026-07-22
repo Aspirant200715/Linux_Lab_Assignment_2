@@ -152,3 +152,72 @@ The `close()` system call releases the file descriptor after all operations are 
 ## Conclusion
 
 This program demonstrates efficient file handling using Linux system calls. By combining `open()`, `write()`, `lseek()`, `read()`, and `close()`, it performs file creation, selective updates, and random record retrieval without rewriting the complete file, making it suitable for secure and efficient file-processing applications.
+
+---
+
+# Question 5 - Recovery Mechanisms in vi Editor
+
+## Objective
+
+Evaluate the recovery mechanisms available in the vi editor after an unexpected system crash and identify the most reliable recovery strategy.
+
+---
+
+## Files Included
+
+- `config.txt` – Sample configuration file
+- `commands.txt` – Commands executed
+- `explanation.md` – Explanation of each command
+- `screenshots/` – Screenshots demonstrating the recovery process
+
+---
+
+# Recovery Mechanisms in vi
+
+## 1. Swap Files (.swp)
+
+When a file is opened, vi automatically creates a swap file (`.swp`). If the editor or system crashes, the swap file contains the latest unsaved changes and can be used for recovery.
+
+---
+
+## 2. Undo History
+
+The undo feature (`u`) allows users to reverse recent changes during the current editing session. However, once the editor crashes or is closed, the undo history is lost.
+
+---
+
+## 3. Registers
+
+Registers temporarily store copied, deleted, or yanked text inside the editor. They are useful for editing but generally cannot recover work after a crash because they exist only during the editing session.
+
+---
+
+## 4. Backup Files
+
+Backup files are optional copies of the original file created before editing. They help restore the previous saved version but do not contain the latest unsaved changes.
+
+---
+
+## 5. Auto-Recovery
+
+The `vi -r filename` command uses the swap file to recover unsaved work after an unexpected crash. It restores the most recent changes available in the swap file.
+
+---
+
+# Most Reliable Recovery Strategy
+
+The most reliable recovery strategy is to use **swap files together with the `vi -r` recovery command**.
+
+### Justification
+
+- Swap files are automatically created by vi during editing.
+- They store unsaved changes periodically.
+- After a crash, the `vi -r` command restores the latest recoverable version.
+- This approach minimizes data loss without requiring manual backups.
+- It is the standard recovery mechanism provided by the vi editor.
+
+---
+
+# Conclusion
+
+The vi editor provides several recovery mechanisms, including swap files, undo history, registers, backup files, and auto-recovery. Among these, **swap files combined with `vi -r` offer the most reliable solution**, as they automatically preserve unsaved changes and allow recovery after unexpected system failures.

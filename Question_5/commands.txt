@@ -1,0 +1,7 @@
+echo "server_port=8080" > config.txt
+
+vi config.txt
+
+vi -r config.txt
+
+cat config.txt

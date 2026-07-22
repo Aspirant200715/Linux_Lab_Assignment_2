@@ -1,0 +1,2 @@
+server_port=9090
+max_connections=100
