@@ -1,0 +1,9 @@
+Employee records written successfully.
+Employee record updated successfully.
+
+Retrieved Record:
+ID: 103
+Name: Charlie
+Salary: 55000.00
+
+File closed successfully.

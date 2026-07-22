@@ -87,3 +87,68 @@ The `kill()` system call sends signals to processes. In this program, `SIGKILL` 
 This program demonstrates process management in Linux by combining process creation, monitoring, waiting, and signal handling. Together, these mechanisms ensure efficient execution, prevent zombie processes, and terminate unresponsive child processes.
 
 --- 
+
+# Question 3 - File Processing using Linux System Calls
+
+## Objective
+
+Design a C program using Linux system calls to:
+
+- Create a file.
+- Write employee records.
+- Update a specific record without rewriting the entire file.
+- Retrieve records efficiently from any location.
+- Explain the role of `open()`, `read()`, `write()`, `lseek()`, and `close()`.
+
+---
+
+## Files Included
+
+- `employee_records.c` – Source code
+- `employee_records.txt` – File created during execution
+- `commands.txt` – Commands executed
+- `explanation.md` – Explanation of every command
+- `output.txt` – Saved program output
+- `screenshots/` – Screenshots of commands and outputs
+
+---
+
+## Program Logic
+
+1. The program creates a file named `employee_records.txt` using the `open()` system call.
+2. Three employee records are written into the file using the `write()` system call.
+3. The file pointer is moved to the second employee record using `lseek()`.
+4. The second employee record is updated directly without rewriting the entire file.
+5. The file pointer is moved to the third record using `lseek()`.
+6. The third employee record is retrieved using the `read()` system call.
+7. Finally, the file is closed using the `close()` system call.
+
+---
+
+# Role of Linux System Calls
+
+## open()
+
+The `open()` system call creates or opens a file and returns a file descriptor. It is used as the entry point for all file operations.
+
+## write()
+
+The `write()` system call stores employee records into the file. It writes binary data directly through the file descriptor.
+
+## lseek()
+
+The `lseek()` system call changes the current position of the file pointer. This allows direct access to any employee record without rewriting the entire file.
+
+## read()
+
+The `read()` system call retrieves employee records from the desired location in the file after positioning the file pointer with `lseek()`.
+
+## close()
+
+The `close()` system call releases the file descriptor after all operations are complete. Closing the file ensures that resources are freed and data is properly saved.
+
+---
+
+## Conclusion
+
+This program demonstrates efficient file handling using Linux system calls. By combining `open()`, `write()`, `lseek()`, `read()`, and `close()`, it performs file creation, selective updates, and random record retrieval without rewriting the complete file, making it suitable for secure and efficient file-processing applications.
