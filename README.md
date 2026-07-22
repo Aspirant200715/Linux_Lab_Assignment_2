@@ -32,3 +32,58 @@ Design a shell script that:
 The script computes a SHA-256 hash for every submission file. If a hash has not been encountered before, the file is copied to the backup directory. If the hash already exists, the file is identified as a duplicate. After processing all files, a report is generated summarizing the results, and any errors are redirected to `errors.log`.
 
 ---
+
+# Question 2 - Process Management using fork(), wait(), and Signals
+
+## Objective
+
+Design a C program that:
+
+- Creates child processes using `fork()`.
+- Monitors their execution.
+- Prevents zombie processes.
+- Terminates unresponsive child processes using signals.
+
+---
+
+## Files Included
+
+- `process_manager.c` - Source code
+- `commands.txt` - Commands executed
+- `explanation.md` - Explanation after every command
+- `output.txt` - Program output
+- `screenshots/` - Screenshots of commands and outputs
+
+---
+
+## Working
+
+The parent process creates two child processes using the `fork()` system call.
+
+The first child process performs its task and exits normally after a short delay.
+
+The second child process intentionally sleeps for a longer duration to simulate an unresponsive process.
+
+The parent waits for five seconds before checking whether the second child is still running. If it is active, the parent terminates it using the `SIGKILL` signal.
+
+Finally, the parent process calls `wait()` to collect the termination status of all child processes. This prevents zombie processes by ensuring that all terminated child processes are properly cleaned up.
+
+---
+
+## Process Creation
+
+The `fork()` system call creates a new child process by duplicating the parent process. After `fork()`, both the parent and child execute independently with separate process IDs.
+
+## Waiting
+
+The `wait()` system call suspends the parent process until one of its child processes terminates. It also retrieves the child's exit status and removes it from the process table, preventing zombie processes.
+
+## Signal Handling
+
+The `kill()` system call sends signals to processes. In this program, `SIGKILL` is used to forcefully terminate an unresponsive child process. Using signals allows the parent process to control child processes and recover system resources efficiently.
+
+## Conclusion
+
+This program demonstrates process management in Linux by combining process creation, monitoring, waiting, and signal handling. Together, these mechanisms ensure efficient execution, prevent zombie processes, and terminate unresponsive child processes.
+
+--- 

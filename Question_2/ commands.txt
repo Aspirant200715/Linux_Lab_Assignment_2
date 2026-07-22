@@ -1,0 +1,9 @@
+gcc process_manager.c -o process_manager
+
+./process_manager
+
+ps -ef | grep process_manager
+
+./process_manager > output.txt
+
+cat output.txt

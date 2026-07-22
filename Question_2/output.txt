@@ -1,0 +1,6 @@
+Child Process 1 started (PID: 14955)
+Child Process 1 completed.
+Parent Process (PID: 14954)
+Child Process 2 is still running.
+Terminating Child Process 2...
+All child processes handled successfully.
